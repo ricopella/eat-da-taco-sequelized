@@ -17,8 +17,8 @@ app.use(methodOverride("_method"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-let routes = require("./controllers/taco_controller")(app);
-app.use("/", routes);
+require("./controllers/taco_controller")(app);
+// app.use("/", routes);
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {

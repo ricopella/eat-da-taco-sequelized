@@ -1,6 +1,6 @@
 # Eat Dos Tacos
 
-## Overview
+## Overview &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Eat-Dos-Tacos is a Sequel to [Eat-Da-Taco](https://github.com/ricopella/eat-da-taco). This is a Full-Stack application with a Front-End implented with HTML/CSS and templating from Handlebars framework. The Back-End consists of Node.js, Express, and **Sequelize**.
 

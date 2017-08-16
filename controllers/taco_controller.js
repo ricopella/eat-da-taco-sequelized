@@ -8,10 +8,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/tacos", function(req, res) {
-    console.log(res);
+    // console.log(res);
     db.tacos2s.findAll().then(function(result) {
-        console.log(result);
+        // console.log(result);
         var hbsObject = { taco: result };
+        console.log("this tho");
+        console.log(hbsObject);
         res.render("index", hbsObject);
     })
 })

@@ -1,7 +1,7 @@
 
 <header>
 
-        <h1>EAT-DA-TACOS!</h1>
+        <h1>EAT-DOS-TACOS!</h1>
 
     <div class="picture">
             <img src="assets/images/taco-.png" alt="Taco Image">
@@ -14,10 +14,10 @@
     <div class="align-item eat">
         <h2>Ready to Eat!</h2>
             <ul class="icon">
-              {{#each taco}}
+              {{#each taco }}
               {{#unless this.devoured}}
                   <li class="fork" title="Taco was made on: {{this.date}}">
-                    {{this.taco_name}}
+                    {{this.tacoName}}
                     <form action="/{{this.id}}?_method=PUT" method="POST">
                       <input type="hidden" name="devoured" value="1">
                       <button class="dev" type="submit">Devour it!</button>

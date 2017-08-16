@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const exphbs = require("express-handlebars");
-// const routes = require("./controllers/taco_controller.js");
+const routes = require("./controllers/taco_controller.js");
+const sequelize = require('sequelize');
 const app = express();
-const PORT = process.env.PORT || 3000;
-let db = require("./models");
+const port = process.env.PORT || 3000;
+var db = require("./models");
 
 app.use(express.static("public"));
 
@@ -17,11 +18,11 @@ app.use(methodOverride("_method"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-require("./controllers/taco_controller")(app);
-// app.use("/", routes);
+app.use("/", routes);
 
 db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-        console.log("App listening on PORT " + PORT);
+
+    app.listen(port, function() {
+        console.log("App listening on PORT " + port);
     });
 });

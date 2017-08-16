@@ -1,5 +1,7 @@
+const sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
-    let Taco = sequelize.define("Tacos2", {
+    let Taco = sequelize.define("tacos2s", {
         tacoName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -11,6 +13,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
-    });
+    })
     return Taco;
 };

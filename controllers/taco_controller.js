@@ -7,19 +7,18 @@ router.get("/", (req, res) => {
     res.redirect("/tacos");
 });
 
-router.get("/tacos", function(req, res) {
+router.get("/tacos", (req, res) => {
     // console.log(res);
-    db.tacos2s.findAll().then(function(result) {
+    db.tacos2s.findAll().then((result) => {
         // console.log(result);
         var hbsObject = { taco: result };
-        console.log("this tho");
-        console.log(hbsObject);
+        // console.log(hbsObject);
         res.render("index", hbsObject);
     })
 })
 
 router.post("/", (req, res) => {
-    db.tacos2s.create({ tacoName: req.body.taco_name, devoured: req.body.devoured }).then(function() {
+    db.tacos2s.create({ tacoName: req.body.taco_name }).then(function() {
         res.redirect("/tacos");
     });
 });

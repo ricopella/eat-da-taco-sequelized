@@ -16,7 +16,7 @@
             <ul class="icon">
               {{#each taco }}
               {{#unless this.devoured}}
-                  <li class="fork" title="Taco was made on: {{this.date}}">
+                  <li class="fork" title="Taco was made on: {{this.createdAt}}">
                     {{this.tacoName}}
                     <form action="/{{this.id}}?_method=PUT" method="POST">
                       <input type="hidden" name="devoured" value="1">
@@ -45,7 +45,7 @@
             <ul class="icon">
                 {{#each taco}}
               {{#if this.devoured}}
-                  <li title="Taco was made on: {{this.date}}">
+                  <li title="Taco was Eaten on: {{this.updatedAt}}">
                     {{this.tacoName}}
                   </li>
               {{/if}}

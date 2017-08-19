@@ -6,6 +6,9 @@ $("#addTaco").on("click", function() {
     if (tacoName === "") {
         $("#incompleteForm").modal('show');
         return false;
+    } else {
+        $("customerBox").modal('show');
+        return
     };
 
     $.post("/", tacoName, function(data) {

@@ -8,7 +8,7 @@ Eat-Dos-Tacos is a Sequel to [Eat-Da-Taco](https://github.com/ricopella/eat-da-t
 
 A user is able to create a taco name to add to the menu. Once a new taco is created, it's added to the `Ready to Eat` section. The user then can choose to `Devour` the taco. Before they can `Devour` the taco, they must enter their name. If a name was given & taco was devoured, the menu item updates to the `Devoured` section and lets you know who ate it.
 
-* If you hover over a taken (devoured or not) it will tell you when it was created (not devoured) or eaten (devoured).
+* If you hover over a taco (devoured or not) it will tell you when it was created (not devoured) or eaten (devoured).
 
 * In both `Ready to Eat` and `Devoured` sections, taco's are listed in Assecending order.
 

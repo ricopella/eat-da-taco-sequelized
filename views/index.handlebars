@@ -18,7 +18,7 @@
               {{#unless this.devoured}}
                   <li class="fork" title="Taco was made on: {{this.createdAt}}">
                     {{this.tacoName}}
-                    <form action="/{{this.id}}?_method=PUT" method="POST">
+                    <form action="/{{this.id}}?_method=PUT" method="POST" class="name_entry">
                       <input type="hidden" name="devoured" value="1">
                       <input type="hidden" name="taco_id" value="{{this.id}}">
                       <input type="text" name="customer_name" placeholder="Enter Your Name" required>

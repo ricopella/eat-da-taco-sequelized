@@ -105,9 +105,17 @@ button {
 }
 
 button.dev {
+    width: 100%;
     background-color: #d9534f;
     box-shadow: 4px 3px 2px #2E2E2E;
     border: none;
+}
+
+.name_entry input[type="text"] {
+    width: 50%;
+    padding: 2%;
+    margin-bottom: 2%;
+    font-size: 25px;
 }
 
 #addTaco {

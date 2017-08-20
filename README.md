@@ -6,7 +6,11 @@ Eat-Dos-Tacos is a Sequel to [Eat-Da-Taco](https://github.com/ricopella/eat-da-t
 
 ## Instructions
 
-A user is able to create a taco name to add to the menu. Once a new taco is created, it's added to the `Ready to Eat` section. The user then can choose to `Devour` the taco by clicking the associated button. If devoured, the menu item updates to the `Devoured` section.
+A user is able to create a taco name to add to the menu. Once a new taco is created, it's added to the `Ready to Eat` section. The user then can choose to `Devour` the taco. Before they can `Devour` the taco, they must enter their name. If a name was given & taco was devoured, the menu item updates to the `Devoured` section and lets you know who ate it.
+
+* If you hover over a taken (devoured or not) it will tell you when it was created (not devoured) or eaten (devoured).
+
+* In both `Ready to Eat` and `Devoured` sections, taco's are listed in Assecending order.
 
 ## Installation
 
@@ -24,12 +28,13 @@ List of required dependencies which can be gathered by `npm install` once reposi
 ```
 {
   "dependencies": {
-        "body-parser": "^1.17.2",
+       "body-parser": "^1.17.2",
         "express": "^4.15.4",
         "express-handlebars": "^3.0.0",
         "method-override": "^2.3.9",
+        "mysql": "^2.14.1",
         "mysql2": "^1.4.0",
-        "sequelize": "^4.4.7"
+        "sequelize": "^4.5.0"
     }
 }
 ```
@@ -50,6 +55,7 @@ List of required dependencies which can be gathered by `npm install` once reposi
 │   └── seeds.sql
 │
 ├── models
+│   ├── customers.js
 │   ├── index.js
 │   └── taco.js
 │ 
@@ -58,14 +64,15 @@ List of required dependencies which can be gathered by `npm install` once reposi
 ├── package.json
 │
 ├── public
-│   ├── assets
-│   │   ├── css
-│   │   │   └── normalize.css
-│   │   │   └── normalize.css
-│   │   │   └── taco_style.css
-│   │   │   └── reset.css
-│   │   └── img
-│   │       └── taco-.png
+│   └── assets
+│       ├── css
+│       │   └── normalize.css
+│       │   └── taco_style.css
+│       │   └── reset.css
+│       ├── images
+│       │   └── taco-.png
+│       └── js
+│           └── app.js
 │
 ├── server.js
 │

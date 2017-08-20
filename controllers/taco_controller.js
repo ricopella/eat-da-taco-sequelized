@@ -1,50 +1,84 @@
-const express = require('express');
-const db = require('../models');
-const router = express.Router();
+const express = require('express'),
+    db = require('../models'),
+    router = express.Router();
 
-// root directory renders index.handblebars
-router.get("/", (req, res) => {
-    res.redirect("/tacos");
-});
+router.get("/", (req, res) => { return res.redirect("/tacos") });
 
 router.get("/tacos", (req, res) => {
     // console.log(res);
     db.tacos2s.findAll({
         include: [db.Customer],
-        ascending: [
+        order: [
             ["tacoName", "ASC"]
         ]
-
     }).then((result) => {
-        // console.log(result);
-        var hbsObject = { taco: result };
-        // console.log(hbsObject);
-        res.render("index", hbsObject);
+        let hbsObject = { taco: result };
+        return res.render("index", hbsObject);
     })
 });
 
 router.post("/", (req, res) => {
-    db.tacos2s.create({ tacoName: req.body.taco_name }).then(function() {
-        res.redirect("/tacos");
-    });
+    db.tacos2s.create({ tacoName: req.body.taco_name }).then(() => {
+        return res.redirect("/tacos");
+    }).catch(error => {
+        if (error) {
+            console.log(JSON.stringify(error));
+        }
+    })
 });
 
 router.put("/:id", (req, res) => {
-    // id of clicked button
-    let condition = "id = " + req.params.id;
-    // change value to true - aka devoured!
-    db.customers.create({
-        customer: req.body.customer_name,
-        id: req.body.taco_id
-    }).then((dbCustomer) => {
-        return db.Taco.update({
-            devoured: req.body.devoured
-        }, {
-            where: { id: req.params.id }
-        });
-    }).then(() => {
-        res.redirect("/tacos");
+    // id of clicked taco
+    let tacoId = req.params.id;
+    let customerName = req.body.customer_name;
+
+    db.Customer.findAll({
+        where: {
+            customer: customerName
+        }
+    }).then(customer => {
+        // if Customer does not exist
+        if (customer.length === 0) {
+            db.Customer.create({
+                customer: req.body.customer_name
+            }).then(newCustomer => {
+                db.tacos2s.update({
+                    devoured: true,
+                    CustomerId: newCustomer.id
+                }, {
+                    where: {
+                        id: req.params.id
+                    }
+                }).then(taco => {
+                    res.redirect('/')
+                }).catch(error => {
+                    console.log(error);
+                }).catch(error => {
+                    console.log(error);
+                })
+            })
+        } else {
+            // if customer already exists
+            console.log("this" + customer[0]);
+            db.tacos2s.update({
+                devoured: true,
+                CustomerId: customer[0].id
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            }).then(taco => {
+                res.redirect('/');
+            }).catch(error => {
+                console.log(error);
+            }).catch(error => {
+                if (error) {
+                    console.log(error);
+                }
+            })
+
+        }
     });
-});
+})
 
 module.exports = router;

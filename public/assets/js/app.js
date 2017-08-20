@@ -1,21 +1,16 @@
 $("#addTaco").on("click", function() {
-    // event.preventDefault();
-
     let tacoName = $("#ta").val();
 
-    if (tacoName === "") {
+    if (tacoName.length === 0) {
         $("#incompleteForm").modal('show');
         return false;
     } else {
-        $("customerBox").modal('show');
-        return
-    };
-
-    $.post("/", tacoName, function(data) {
-        return true;
-    }).then(function() {
-        $.get("/", function() {
+        $.post("/", tacoName, data => {
             return true;
+        }).then(function() {
+            $.get("/", function() {
+                return true;
+            })
         })
-    })
+    }
 });

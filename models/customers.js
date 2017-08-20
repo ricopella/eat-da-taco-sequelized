@@ -1,22 +1,14 @@
 const sequelize = require('sequelize');
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     let Customer = sequelize.define("Customer", {
         customer: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING
         },
 
-    }, {
-        // classMethods: {
-        //     associate: function(models) {
-        //         Customer.belongsTo(models.Taco);
-        //     }
-        // }
     });
 
-    Customer.associate = function(models) {
-        debugger;
+    Customer.associate = (models) => {
         Customer.hasMany(models.tacos2s);
     }
     return Customer;

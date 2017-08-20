@@ -1,6 +1,6 @@
 const sequelize = require('sequelize');
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     let Taco = sequelize.define("tacos2s", {
         tacoName: {
             type: DataTypes.STRING,
@@ -13,17 +13,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
-    }, {
-        // classMethods: {
-        //     associate: function(models) {
-        //         Taco.hasOne(models.Customer);
-        //     }
-        // }
     })
 
-    Taco.associate = function(models) {
-        debugger;
-        Taco.belongsTo(models.Customer);
+    Taco.associate = (models) => {
+        Taco.belongsTo(models.Customer, {
+            foreignKey: {
+                field: "Customer_id",
+                allowNull: false
+            }
+        });
     }
 
     return Taco;

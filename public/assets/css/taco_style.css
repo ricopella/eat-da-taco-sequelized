@@ -67,7 +67,7 @@ header h1 {
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -78,7 +78,7 @@ ul {
 
 li {
     margin-bottom: 2%;
-    font-size: 25px;
+    font-size: 14px;
 }
 
 form {
@@ -115,14 +115,14 @@ button.dev {
     width: 50%;
     padding: 2%;
     margin-bottom: 2%;
-    font-size: 25px;
+    font-size: 14px;
 }
 
 #addTaco {
     margin-top: 3%;
     padding: 2% 8% 2% 8%;
     width: 100%;
-    font-size: 25px;
+    font-size: 22px;
     background-color: #5cb85c;
     box-shadow: 4px 3px 2px #2E2E2E;
     border: border-style color;
@@ -142,6 +142,11 @@ input#ta {
     border-radius: 8px;
     padding: 2% 2% 2% 2%;
     font-size: 20px;
+}
+
+input[type="text"] {
+    border-radius: 3%;
+    border: none;
 }
 
 .modal-header {
